@@ -206,7 +206,7 @@ export default function App() {
                     {step >= 1 && (
                         <section style={Z.sec}>
                             <Hd n="1" t="今日やりたいこと" />
-                            <p style={Z.hint}>思いつくまま書き出そう（↕で並び替え）</p>
+                            <p style={Z.hint}>思いつくまま書き出そう</p>
                             <div style={Z.tList}>
                                 {tasks.map((t, i) => (
                                     <div key={i}
@@ -214,15 +214,10 @@ export default function App() {
                                             ...Z.tRow,
                                             ...(step >= 2 && selected.includes(i) ? Z.tSel : {}),
                                             ...(step >= 2 && !selected.includes(i) ? Z.tDim : {}),
+                                            cursor: step === 1 ? "grab" : "default",
+                                            opacity: dragIdx === i ? 0.4 : 1,
+                                            transition: "opacity 0.2s"
                                         }}>
-                                        {step === 1 && (
-                                            <div style={Z.reorderBtns}>
-                                                <button style={{ ...Z.arrowBtn, opacity: i === 0 ? 0.2 : 1 }}
-                                                    onClick={() => moveTask(i, i - 1)} disabled={i === 0}>▲</button>
-                                                <button style={{ ...Z.arrowBtn, opacity: i === tasks.length - 1 ? 0.2 : 1 }}
-                                                    onClick={() => moveTask(i, i + 1)} disabled={i === tasks.length - 1}>▼</button>
-                                            </div>
-                                        )}
                                         {step >= 2 && (
                                             <button style={{ ...Z.chk, ...(selected.includes(i) ? Z.chkOn : {}) }}
                                                 onClick={() => step === 2 && toggleSel(i)}>
