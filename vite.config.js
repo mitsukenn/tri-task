@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-    base: '/tri-rank/',
+    base: '/tri-task/',
     plugins: [
         react(),
         VitePWA({
@@ -16,8 +16,8 @@ export default defineConfig({
                 background_color: '#f8fbff',
                 display: 'standalone',
                 orientation: 'portrait',
-                start_url: '/tri-rank/',
-                scope: '/tri-rank/',
+                start_url: '/tri-task/',
+                scope: '/tri-task/',
                 icons: [
                     {
                         src: 'icon-192.png',
